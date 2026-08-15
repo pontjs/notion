@@ -1,6 +1,6 @@
 {
   "name": "@pontx/notion",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "packageManager": "pnpm@10.14.0",
   "description": "Type-safe Notion API SDK and CLI generated from the product-owned PontxSpec",
@@ -52,7 +52,7 @@
   },
   "homepage": "https://pontx.dev/en/sdks/notion",
   "bugs": {
-    "url": "https://github.com/pontjs/nager-date/issues"
+    "url": "https://github.com/pontjs/notion/issues"
   },
   "publishConfig": {
     "access": "public"
