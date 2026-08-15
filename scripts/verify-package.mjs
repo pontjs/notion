@@ -36,11 +36,12 @@ try {
     cwd: temporary,
     maxBuffer: 10 * 1024 * 1024,
   });
+  const localPackage = JSON.parse(await readFile(resolve("package.json"), "utf8"));
   const installedPackage = JSON.parse(await readFile(
     join(temporary, "node_modules/@pontx/notion/package.json"), "utf8",
   ));
   assert.equal(installedPackage.name, "@pontx/notion");
-  assert.equal(installedPackage.version, "0.1.0");
+  assert.equal(installedPackage.version, localPackage.version);
 
   await execFileAsync(process.execPath, ["--input-type=module", "--eval", [
     "import('@pontx/notion').then((sdk) => {",
