@@ -3,3 +3,4 @@ dist/
 reports/
 *.tgz
 .env
+.DS_Store
