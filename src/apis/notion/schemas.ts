@@ -274,7 +274,7 @@ export type boardViewConfigRequest = {
    * @title card layout 值
    * @description card layout 字段。
    */
-  card_layout?: any;
+  card_layout?: 'list' | 'compact';
   /**
    * @title cover 值
    * @description 资源封面。
@@ -284,18 +284,18 @@ export type boardViewConfigRequest = {
    * @title cover aspect 值
    * @description cover aspect 字段。
    */
-  cover_aspect?: any;
+  cover_aspect?: 'contain' | 'cover';
   /**
    * @title cover size 值
    * @description cover size 字段。
    */
-  cover_size?: any;
+  cover_size?: 'small' | 'medium' | 'large';
   group_by: groupByConfigRequest;
   /**
    * @title properties 值
    * @description 页面属性值或数据源属性模式。
    */
-  properties?: any;
+  properties?: Array<viewPropertyConfigRequest>;
   /**
    * @title sub group by 值
    * @description sub group by 字段。
@@ -415,7 +415,7 @@ export type booleanFormulaPropertyValueResponse = {
    * @title boolean 值
    * @description boolean 字段。
    */
-  boolean: any;
+  boolean: boolean;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -453,7 +453,7 @@ export type botInfoResponse = {
    * @title workspace name 值
    * @description 工作区名称。
    */
-  workspace_name: any;
+  workspace_name: string;
 }
 
 /**
@@ -628,12 +628,12 @@ export type calendarViewConfigRequest = {
    * @title properties 值
    * @description 页面属性值或数据源属性模式。
    */
-  properties?: any;
+  properties?: Array<viewPropertyConfigRequest>;
   /**
    * @title show weekends 值
    * @description show weekends 字段。
    */
-  show_weekends?: any;
+  show_weekends?: boolean;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -643,7 +643,7 @@ export type calendarViewConfigRequest = {
    * @title view range 值
    * @description view range 字段。
    */
-  view_range?: any;
+  view_range?: 'week' | 'month';
 }
 
 /**
@@ -852,154 +852,12 @@ export type chartViewConfigRequest = {
    * @title axis labels 值
    * @description axis labels 字段。
    */
-  axis_labels?: any;
-  /**
-   * @title caption 值
-   * @description caption 字段。
-   */
-  caption?: any;
-  /**
-   * @title chart type 值
-   * @description chart type 字段。
-   */
-  chart_type: 'column' | 'bar' | 'line' | 'donut' | 'number';
-  /**
-   * @title color by value 值
-   * @description color by value 字段。
-   */
-  color_by_value?: any;
-  /**
-   * @title color theme 值
-   * @description color theme 字段。
-   */
-  color_theme?: any;
-  /**
-   * @title cumulative 值
-   * @description cumulative 字段。
-   */
-  cumulative?: any;
-  /**
-   * @title donut labels 值
-   * @description donut labels 字段。
-   */
-  donut_labels?: any;
-  /**
-   * @title grid lines 值
-   * @description grid lines 字段。
-   */
-  grid_lines?: any;
-  /**
-   * @title group style 值
-   * @description group style 字段。
-   */
-  group_style?: any;
-  /**
-   * @title height 值
-   * @description height 字段。
-   */
-  height?: any;
-  /**
-   * @title hide empty groups 值
-   * @description hide empty groups 字段。
-   */
-  hide_empty_groups?: any;
-  /**
-   * @title hide line fill area 值
-   * @description hide line fill area 字段。
-   */
-  hide_line_fill_area?: any;
-  /**
-   * @title hide title 值
-   * @description hide title 字段。
-   */
-  hide_title?: any;
-  /**
-   * @title legend position 值
-   * @description legend position 字段。
-   */
-  legend_position?: any;
-  /**
-   * @title reference lines 值
-   * @description reference lines 字段。
-   */
-  reference_lines?: any;
-  /**
-   * @title show data labels 值
-   * @description show data labels 字段。
-   */
-  show_data_labels?: any;
-  /**
-   * @title smooth line 值
-   * @description smooth line 字段。
-   */
-  smooth_line?: any;
-  /**
-   * @title sort 值
-   * @description 排序条件。
-   */
-  sort?: any;
-  /**
-   * @title stack by 值
-   * @description stack by 字段。
-   */
-  stack_by?: any;
-  /**
-   * @title type 值
-   * @description 对象或块类型。
-   */
-  type: string;
-  /**
-   * @title value 值
-   * @description 属性值。
-   */
-  value?: any;
-  /**
-   * @title x axis 值
-   * @description x axis 字段。
-   */
-  x_axis?: any;
-  /**
-   * @title x axis property id 值
-   * @description x axis property id 字段。
-   */
-  x_axis_property_id?: any;
-  /**
-   * @title y axis 值
-   * @description y axis 字段。
-   */
-  y_axis?: any;
-  /**
-   * @title y axis max 值
-   * @description y axis max 字段。
-   */
-  y_axis_max?: any;
-  /**
-   * @title y axis min 值
-   * @description y axis min 字段。
-   */
-  y_axis_min?: any;
-  /**
-   * @title y axis property id 值
-   * @description y axis property id 字段。
-   */
-  y_axis_property_id?: any;
-}
-
-/**
- * @title chartViewConfigResponse 数据结构
- * @description chart View Config Response 字段。
- */
-export type chartViewConfigResponse = {
-  /**
-   * @title axis labels 值
-   * @description axis labels 字段。
-   */
   axis_labels?: 'none' | 'x_axis' | 'y_axis' | 'both';
   /**
    * @title caption 值
    * @description caption 字段。
    */
-  caption?: any;
+  caption?: string;
   /**
    * @title chart type 值
    * @description chart type 字段。
@@ -1064,7 +922,149 @@ export type chartViewConfigResponse = {
    * @title reference lines 值
    * @description reference lines 字段。
    */
-  reference_lines?: any;
+  reference_lines?: Array<chartReferenceLineRequest>;
+  /**
+   * @title show data labels 值
+   * @description show data labels 字段。
+   */
+  show_data_labels?: boolean;
+  /**
+   * @title smooth line 值
+   * @description smooth line 字段。
+   */
+  smooth_line?: boolean;
+  /**
+   * @title sort 值
+   * @description 排序条件。
+   */
+  sort?: 'manual' | 'x_ascending' | 'x_descending' | 'y_ascending' | 'y_descending';
+  /**
+   * @title stack by 值
+   * @description stack by 字段。
+   */
+  stack_by?: any;
+  /**
+   * @title type 值
+   * @description 对象或块类型。
+   */
+  type: string;
+  /**
+   * @title value 值
+   * @description 属性值。
+   */
+  value?: any;
+  /**
+   * @title x axis 值
+   * @description x axis 字段。
+   */
+  x_axis?: any;
+  /**
+   * @title x axis property id 值
+   * @description x axis property id 字段。
+   */
+  x_axis_property_id?: string;
+  /**
+   * @title y axis 值
+   * @description y axis 字段。
+   */
+  y_axis?: any;
+  /**
+   * @title y axis max 值
+   * @description y axis max 字段。
+   */
+  y_axis_max?: number;
+  /**
+   * @title y axis min 值
+   * @description y axis min 字段。
+   */
+  y_axis_min?: number;
+  /**
+   * @title y axis property id 值
+   * @description y axis property id 字段。
+   */
+  y_axis_property_id?: string;
+}
+
+/**
+ * @title chartViewConfigResponse 数据结构
+ * @description chart View Config Response 字段。
+ */
+export type chartViewConfigResponse = {
+  /**
+   * @title axis labels 值
+   * @description axis labels 字段。
+   */
+  axis_labels?: 'none' | 'x_axis' | 'y_axis' | 'both';
+  /**
+   * @title caption 值
+   * @description caption 字段。
+   */
+  caption?: string;
+  /**
+   * @title chart type 值
+   * @description chart type 字段。
+   */
+  chart_type: 'column' | 'bar' | 'line' | 'donut' | 'number';
+  /**
+   * @title color by value 值
+   * @description color by value 字段。
+   */
+  color_by_value?: boolean;
+  /**
+   * @title color theme 值
+   * @description color theme 字段。
+   */
+  color_theme?: 'gray' | 'blue' | 'yellow' | 'green' | 'purple' | 'teal' | 'orange' | 'pink' | 'red' | 'auto' | 'colorful';
+  /**
+   * @title cumulative 值
+   * @description cumulative 字段。
+   */
+  cumulative?: boolean;
+  /**
+   * @title donut labels 值
+   * @description donut labels 字段。
+   */
+  donut_labels?: 'none' | 'value' | 'name' | 'name_and_value';
+  /**
+   * @title grid lines 值
+   * @description grid lines 字段。
+   */
+  grid_lines?: 'none' | 'horizontal' | 'vertical' | 'both';
+  /**
+   * @title group style 值
+   * @description group style 字段。
+   */
+  group_style?: 'normal' | 'percent' | 'side_by_side';
+  /**
+   * @title height 值
+   * @description height 字段。
+   */
+  height?: 'small' | 'medium' | 'large' | 'extra_large';
+  /**
+   * @title hide empty groups 值
+   * @description hide empty groups 字段。
+   */
+  hide_empty_groups?: boolean;
+  /**
+   * @title hide line fill area 值
+   * @description hide line fill area 字段。
+   */
+  hide_line_fill_area?: boolean;
+  /**
+   * @title hide title 值
+   * @description hide title 字段。
+   */
+  hide_title?: boolean;
+  /**
+   * @title legend position 值
+   * @description legend position 字段。
+   */
+  legend_position?: 'off' | 'bottom' | 'side';
+  /**
+   * @title reference lines 值
+   * @description reference lines 字段。
+   */
+  reference_lines?: Array<chartReferenceLineResponse>;
   /**
    * @title show data labels 值
    * @description show data labels 字段。
@@ -1110,12 +1110,12 @@ export type chartViewConfigResponse = {
    * @title y axis max 值
    * @description y axis max 字段。
    */
-  y_axis_max?: any;
+  y_axis_max?: number;
   /**
    * @title y axis min 值
    * @description y axis min 字段。
    */
-  y_axis_min?: any;
+  y_axis_min?: number;
   /**
    * @title y axis property id 值
    * @description y axis property id 字段。
@@ -1600,7 +1600,7 @@ export type commentObjectResponse = {
      * @title resolved name 值
      * @description resolved name 字段。
      */
-    resolved_name: any;
+    resolved_name: string;
     /**
      * @title type 值
      * @description 对象或块类型。
@@ -2277,7 +2277,7 @@ export type dataSourceObjectResponse = {
    * @title public url 值
    * @description 公开访问链接。
    */
-  public_url: any;
+  public_url: string;
   /**
    * @title title 值
    * @description 资源标题。
@@ -2358,7 +2358,7 @@ export type dataSourceViewObjectResponse = {
    * @title data source id 值
    * @description 数据源 ID。
    */
-  data_source_id?: any;
+  data_source_id?: string;
   /**
    * @title filter 值
    * @description 过滤条件。
@@ -2390,12 +2390,12 @@ export type dataSourceViewObjectResponse = {
    * @title quick filters 值
    * @description quick filters 字段。
    */
-  quick_filters?: any;
+  quick_filters?: Record<any, quickFilterConditionResponse>;
   /**
    * @title sorts 值
    * @description sorts 字段。
    */
-  sorts?: any;
+  sorts?: Array<viewSortResponse>;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -2506,7 +2506,7 @@ export type databaseObjectResponse = {
    * @title public url 值
    * @description 公开访问链接。
    */
-  public_url: any;
+  public_url: string;
   /**
    * @title title 值
    * @description 资源标题。
@@ -2783,7 +2783,7 @@ export type dateRequest = {
    * @title end 值
    * @description 时间范围结束。
    */
-  end?: any;
+  end?: string;
   /**
    * @title start 值
    * @description 时间范围开始。
@@ -2805,7 +2805,7 @@ export type dateResponse = {
    * @title end 值
    * @description 时间范围结束。
    */
-  end: any;
+  end: string;
   /**
    * @title start 值
    * @description 时间范围开始。
@@ -2989,7 +2989,7 @@ export type emailSimplePropertyValueResponse = {
    * @title email 值
    * @description 电子邮件地址。
    */
-  email: any;
+  email: string;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -3643,12 +3643,12 @@ export type fileUploadObjectResponse = {
    * @title content length 值
    * @description content length 字段。
    */
-  content_length: any;
+  content_length: number;
   /**
    * @title content type 值
    * @description content type 字段。
    */
-  content_type: any;
+  content_type: string;
   /**
    * @title created by 值
    * @description 创建者。
@@ -3670,7 +3670,7 @@ export type fileUploadObjectResponse = {
    * @title expiry time 值
    * @description expiry time 字段。
    */
-  expiry_time: any;
+  expiry_time: string;
   /**
    * @title file import result 值
    * @description file import result 字段。
@@ -3680,7 +3680,7 @@ export type fileUploadObjectResponse = {
    * @title filename 值
    * @description filename 字段。
    */
-  filename: any;
+  filename: string;
   id: idResponse;
   /**
    * @title in trash 值
@@ -3870,17 +3870,17 @@ export type formViewConfigRequest = {
    * @title anonymous submissions 值
    * @description anonymous submissions 字段。
    */
-  anonymous_submissions?: any;
+  anonymous_submissions?: boolean;
   /**
    * @title is form closed 值
    * @description is form closed 字段。
    */
-  is_form_closed?: any;
+  is_form_closed?: boolean;
   /**
    * @title submission permissions 值
    * @description submission permissions 字段。
    */
-  submission_permissions?: any;
+  submission_permissions?: 'none' | 'comment_only' | 'reader' | 'read_and_write' | 'editor';
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -4249,7 +4249,7 @@ export type galleryViewConfigRequest = {
    * @title card layout 值
    * @description card layout 字段。
    */
-  card_layout?: any;
+  card_layout?: 'list' | 'compact';
   /**
    * @title cover 值
    * @description 资源封面。
@@ -4259,17 +4259,17 @@ export type galleryViewConfigRequest = {
    * @title cover aspect 值
    * @description cover aspect 字段。
    */
-  cover_aspect?: any;
+  cover_aspect?: 'contain' | 'cover';
   /**
    * @title cover size 值
    * @description cover size 字段。
    */
-  cover_size?: any;
+  cover_size?: 'small' | 'medium' | 'large';
   /**
    * @title properties 值
    * @description 页面属性值或数据源属性模式。
    */
-  properties?: any;
+  properties?: Array<viewPropertyConfigRequest>;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -4356,7 +4356,7 @@ export type groupObjectResponse = {
    * @title name 值
    * @description 名称。
    */
-  name: any;
+  name: string;
   /**
    * @title object 值
    * @description 资源对象类型。
@@ -5138,7 +5138,7 @@ export type listViewConfigRequest = {
    * @title properties 值
    * @description 页面属性值或数据源属性模式。
    */
-  properties?: any;
+  properties?: Array<viewPropertyConfigRequest>;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -5185,17 +5185,17 @@ export type mapViewConfigRequest = {
    * @title height 值
    * @description height 字段。
    */
-  height?: any;
+  height?: 'small' | 'medium' | 'large' | 'extra_large';
   /**
    * @title map by 值
    * @description map by 字段。
    */
-  map_by?: any;
+  map_by?: string;
   /**
    * @title properties 值
    * @description 页面属性值或数据源属性模式。
    */
-  properties?: any;
+  properties?: Array<viewPropertyConfigRequest>;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -5424,7 +5424,7 @@ export type multiSelectPropertyConfigurationRequest = {
        * @title description 值
        * @description 资源说明。
        */
-      description?: any;
+      description?: string;
       /**
        * @title name 值
        * @description 名称。
@@ -5567,7 +5567,7 @@ export type numberFormulaPropertyValueResponse = {
    * @title number 值
    * @description 数值。
    */
-  number: any;
+  number: number;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -5665,7 +5665,7 @@ export type numberPartialRollupValueResponse = {
    * @title number 值
    * @description 数值。
    */
-  number: any;
+  number: number;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -5734,7 +5734,7 @@ export type numberSimplePropertyValueResponse = {
    * @title number 值
    * @description 数值。
    */
-  number: any;
+  number: number;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -5960,7 +5960,7 @@ export type pageObjectResponse = {
    * @title public url 值
    * @description 公开访问链接。
    */
-  public_url: any;
+  public_url: string;
   /**
    * @title url 值
    * @description 资源在 Notion 中的打开链接。
@@ -6568,7 +6568,7 @@ export type phoneNumberSimplePropertyValueResponse = {
    * @title phone number 值
    * @description phone number 字段。
    */
-  phone_number: any;
+  phone_number: string;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -6656,17 +6656,17 @@ export type placePropertyValueResponse = {
    * @title address 值
    * @description address 字段。
    */
-  address?: any;
+  address?: string;
   /**
    * @title aws place id 值
    * @description aws place id 字段。
    */
-  aws_place_id?: any;
+  aws_place_id?: string;
   /**
    * @title google place id 值
    * @description google place id 字段。
    */
-  google_place_id?: any;
+  google_place_id?: string;
   /**
    * @title lat 值
    * @description lat 字段。
@@ -6681,7 +6681,7 @@ export type placePropertyValueResponse = {
    * @title name 值
    * @description 名称。
    */
-  name?: any;
+  name?: string;
 }
 
 /**
@@ -7154,7 +7154,7 @@ export type richTextItemResponseCommon = {
    * @title href 值
    * @description 链接地址。
    */
-  href: any;
+  href: string;
   /**
    * @title plain text 值
    * @description 去样式后的纯文本。
@@ -7399,7 +7399,7 @@ export type selectPropertyConfigurationRequest = {
        * @title description 值
        * @description 资源说明。
        */
-      description?: any;
+      description?: string;
       /**
        * @title name 值
        * @description 名称。
@@ -7457,7 +7457,7 @@ export type selectPropertyResponse = {
    * @title description 值
    * @description 资源说明。
    */
-  description: any;
+  description: string;
   /**
    * @title id 值
    * @description 资源的 UUID v4 标识符。
@@ -7640,7 +7640,7 @@ export type statusOptionRequest = {
    * @title description 值
    * @description 资源说明。
    */
-  description?: any;
+  description?: string;
   group?: statusOptionGroup;
   /**
    * @title name 值
@@ -7677,7 +7677,7 @@ export type statusOptionUpdateRequestCommon = {
    * @title description 值
    * @description 资源说明。
    */
-  description?: any;
+  description?: string;
   group?: statusOptionGroup;
 }
 
@@ -7753,7 +7753,7 @@ export type statusPropertyResponse = {
    * @title description 值
    * @description 资源说明。
    */
-  description: any;
+  description: string;
   /**
    * @title id 值
    * @description 资源的 UUID v4 标识符。
@@ -7809,7 +7809,7 @@ export type stringFormulaPropertyValueResponse = {
    * @title string 值
    * @description string 字段。
    */
-  string: any;
+  string: string;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -8260,7 +8260,7 @@ export type tableViewConfigRequest = {
    * @title properties 值
    * @description 页面属性值或数据源属性模式。
    */
-  properties?: any;
+  properties?: Array<viewPropertyConfigRequest>;
   /**
    * @title show vertical lines 值
    * @description show vertical lines 字段。
@@ -8551,7 +8551,13 @@ export type textRichTextItemRequest = {
      * @title link 值
      * @description 文本链接。
      */
-    link?: any
+    link?: {
+      /**
+       * @title url 值
+       * @description 资源在 Notion 中的打开链接。
+       */
+      url: string
+    }
   };
   /**
    * @title type 值
@@ -8579,7 +8585,13 @@ export type textRichTextItemResponse = {
      * @title link 值
      * @description 文本链接。
      */
-    link: any
+    link: {
+      /**
+       * @title url 值
+       * @description 资源在 Notion 中的打开链接。
+       */
+      url: string
+    }
   };
   /**
    * @title type 值
@@ -8603,7 +8615,7 @@ export type timelineArrowsByRequest = {
    * @title property id 值
    * @description 属性 ID。
    */
-  property_id?: any;
+  property_id?: string;
 }
 
 /**
@@ -8615,7 +8627,7 @@ export type timelineArrowsByResponse = {
    * @title property id 值
    * @description 属性 ID。
    */
-  property_id?: any;
+  property_id?: string;
 }
 
 /**
@@ -8666,7 +8678,7 @@ export type timelineViewConfigRequest = {
    * @title color by 值
    * @description color by 字段。
    */
-  color_by?: any;
+  color_by?: boolean;
   /**
    * @title date property id 值
    * @description date property id 字段。
@@ -8676,7 +8688,7 @@ export type timelineViewConfigRequest = {
    * @title end date property id 值
    * @description end date property id 字段。
    */
-  end_date_property_id?: any;
+  end_date_property_id?: string;
   /**
    * @title preference 值
    * @description preference 字段。
@@ -8686,17 +8698,17 @@ export type timelineViewConfigRequest = {
    * @title properties 值
    * @description 页面属性值或数据源属性模式。
    */
-  properties?: any;
+  properties?: Array<viewPropertyConfigRequest>;
   /**
    * @title show table 值
    * @description show table 字段。
    */
-  show_table?: any;
+  show_table?: boolean;
   /**
    * @title table properties 值
    * @description table properties 字段。
    */
-  table_properties?: any;
+  table_properties?: Array<viewPropertyConfigRequest>;
   /**
    * @title type 值
    * @description 对象或块类型。
@@ -9087,7 +9099,7 @@ export type uniqueIdDatabasePropertyConfigResponse = {
      * @title prefix 值
      * @description prefix 字段。
      */
-    prefix: any
+    prefix: string
   };
 }
 
@@ -9110,7 +9122,7 @@ export type uniqueIdPropertyConfigurationRequest = {
      * @title prefix 值
      * @description prefix 字段。
      */
-    prefix?: any
+    prefix?: string
   };
 }
 
@@ -9161,12 +9173,12 @@ export type uniqueIdPropertyValueResponse = {
    * @title number 值
    * @description 数值。
    */
-  number: any;
+  number: number;
   /**
    * @title prefix 值
    * @description prefix 字段。
    */
-  prefix: any;
+  prefix: string;
 }
 
 /**
@@ -9356,7 +9368,7 @@ export type updateViewRequest = {
    * @title quick filters 值
    * @description quick filters 字段。
    */
-  quick_filters?: any;
+  quick_filters?: Record<any, any>;
   /**
    * @title sorts 值
    * @description sorts 字段。
@@ -9431,7 +9443,7 @@ export type urlSimplePropertyValueResponse = {
    * @title url 值
    * @description 资源在 Notion 中的打开链接。
    */
-  url: any;
+  url: string;
 }
 
 /**
@@ -9449,13 +9461,13 @@ export type userObjectResponseCommon = {
    * @title avatar url 值
    * @description avatar url 字段。
    */
-  avatar_url: any;
+  avatar_url: string;
   id: idResponse;
   /**
    * @title name 值
    * @description 名称。
    */
-  name: any;
+  name: string;
   /**
    * @title object 值
    * @description 资源对象类型。
