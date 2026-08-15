@@ -1,0 +1,9 @@
+@pontx/notion is generated from the product-owned Notion API PontxSpec
+identified in source.provenance.json. It does not redistribute the supplier
+OpenAPI document or any Notion SDK source.
+
+The official Notion JavaScript SDK (makenotion/notion-sdk-js) is MIT-licensed
+by Notion Labs, Inc. and is referenced only for contract reconciliation; no
+SDK source is copied into this package. Use of the Notion API is governed by
+the Notion Developer Terms. The Notion name is used descriptively; this
+project is not affiliated with or endorsed by Notion.
