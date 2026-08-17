@@ -1,8 +1,17 @@
 # @pontx/notion
 
-Type-safe Notion API SDK and CLI generated from the exact PontxSpec in the
-Notion API candidate metadata (49 endpoints / 523 schemas, Notion-Version
-2026-03-11).
+Type-safe Notion API SDK and CLI generated from the reviewed PontxSpec for the
+Notion API (49 endpoints / 523 schemas, Notion-Version 2026-03-11).
+
+## Documentation
+
+- [Start with the TypeScript connection recipe](https://pontx.dev/en/docs/notion-typescript?utm_source=npm&utm_medium=readme&utm_campaign=notion-sdk)
+- [Browse the @pontx/notion SDK reference](https://pontx.dev/en/sdks/notion?utm_source=npm&utm_medium=readme&utm_campaign=notion-sdk)
+- [Inspect the full Notion API reference](https://pontx.dev/en/apis/notion?utm_source=npm&utm_medium=readme&utm_campaign=notion-sdk)
+
+The recipe verifies the current connection before you read workspace content.
+It keeps the integration token in your local environment and links to the
+exact Endpoint and SDK details for the next task.
 
 ## Install
 
